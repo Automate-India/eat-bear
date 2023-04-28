@@ -1,0 +1,17 @@
+version: "3.5"
+
+
+services:
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: Dhanush97
+      POSTGRES_USER: sanju
+      POSTGRES_DB: core
+    ports:
+      - "5432:5432"
+
+volumes:
+  data:
+

@@ -16,5 +16,4 @@ services:
 
 volumes:
   eat-bear-core:
-    external: true
 

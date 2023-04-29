@@ -1,11 +1,6 @@
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 
-class CustomUserManager(BaseUserManager):
-
-    def create_user(self, ):
-        pass
-
 
 class CustomUser(AbstractUser):
     first_name = models.CharField(max_length=256, blank=False)

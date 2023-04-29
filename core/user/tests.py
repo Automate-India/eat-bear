@@ -35,6 +35,7 @@ class TestUser(APITestCase):
         self.assertEqual(response.status_code, HTTP_201_CREATED)
 
         response = self.client.post(url, data={"first_name": first_name, "last_name": last_name, "email": email, "password": password}, format='json')
+        users = User.objects.all()
         self.assertEqual(response.status_code, HTTP_400_BAD_REQUEST)
         self.assertEqual(len(users), 1)
 

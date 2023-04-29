@@ -45,3 +45,7 @@ jobs:
         run: |
           cd core
           python manage.py test
+        
+        env:
+          # The hostname used to communicate with the PostgreSQL service container
+          HOST: postgres

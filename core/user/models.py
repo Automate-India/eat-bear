@@ -17,6 +17,7 @@ class CustomUserManager(BaseUserManager):
         )
 
         user.set_password(password)
+        print("hey here is the your password", user.password)
         user.save(using=self._db)
         return user
 

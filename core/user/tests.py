@@ -1,12 +1,27 @@
+from django.contrib.auth.hashers import check_password
 from django.contrib.auth import get_user_model
 from django.urls import reverse
+from django.test import TestCase
 from rest_framework.test import APITestCase
 from rest_framework.status import HTTP_201_CREATED, HTTP_400_BAD_REQUEST
 # Create your tests here.
 
 User = get_user_model()
 
-class TestUser(APITestCase):
+class TestUser(TestCase):
+
+    def test_create_new_user_password_must_be_hashed(self):
+        password = "sanju97"
+    
+        User.objects.create_user(email="dhanusht51@gmail.com", password=password, first_name="name", last_name='name')
+
+        user = User.objects.get(email="dhanusht51@gmail.com")
+        print(user.password)
+        print(check_password(password=password))
+        self.assertEqual(user.password, check_password(password=password))
+
+
+class TestUserAPI(APITestCase):
 
     def test_user_signup(self):
         first_name = "dummy_user"
@@ -38,4 +53,5 @@ class TestUser(APITestCase):
         users = User.objects.all()
         self.assertEqual(response.status_code, HTTP_400_BAD_REQUEST)
         self.assertEqual(len(users), 1)
+
 

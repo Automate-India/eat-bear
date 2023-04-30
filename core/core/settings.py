@@ -54,7 +54,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'core.urls'
 
-AUTHENTICATION_BACKENDS = ['core.custom_authentication.CustomBackend']
 
 TEMPLATES = [
     {

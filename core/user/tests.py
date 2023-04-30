@@ -16,9 +16,8 @@ class TestUser(TestCase):
         User.objects.create_user(email="dhanusht51@gmail.com", password=password, first_name="name", last_name='name')
 
         user = User.objects.get(email="dhanusht51@gmail.com")
-        print(user.password)
-        print(check_password(password=password))
-        self.assertEqual(user.password, check_password(password=password))
+        # print(check_password(password=password))
+        self.assertTrue(user.check_password(raw_password=password))
 
 
 class TestUserAPI(APITestCase):

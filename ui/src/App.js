@@ -1,9 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
+import {Typography} from "@mui/material";
+
 
 function App() {
   return (
-   <h2>Hello welcome</h2>
+   <Typography variant='h3'> WelCome Bear! </Typography>
   );
 }
 

@@ -8,7 +8,7 @@ describe("Button", () => {
         const element = screen.getByRole("button");
         expect(element).toHaveTextContent(buttonText);
         expect(element).tobeEnabled;
-    })
+    });
 
     it("should must call the function passed on clicking the button", async () => {
         const buttonText = "Dummy Text";
@@ -17,5 +17,5 @@ describe("Button", () => {
         const element = screen.getByRole("button");
         fireEvent.click(element);
         expect(dummyFunc.mock.calls).toHaveLength(1);
-    })
+    });
 })

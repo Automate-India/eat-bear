@@ -1,10 +1,11 @@
 import Signup from "../Signup/Signup";
-import {screen, render} from "@testing-library/react";
+import {screen, render, fireEvent} from "@testing-library/react";
 
 describe("Signup", () => {
     it("should render first name field", () => {
         render(<Signup />);
         const firstnameNode = screen.getByLabelText("Firstname");
+        // fireEvent.onChange(firstnameNode, {target: {value}})
 
     })
 

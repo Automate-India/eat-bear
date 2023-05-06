@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import React from 'react'
 
 function Input(props) {
-    const {inputType, label, value, disabled, onChange, name, id, type} = props;
+    const {inputType, label, value, disabled, onChange, name, id, type, required, onBlur, error, errorText} = props;
     return (
     <div>
         <TextField 
@@ -15,6 +15,10 @@ function Input(props) {
             name={name}
             id={id}
             type={type}
+            required={required}
+            onBlur={onBlur}
+            error={error}
+            helperText={errorText}
         />
     </div>
   )
@@ -30,12 +34,20 @@ Input.propTypes = {
     id: PropTypes.string.isRequired,
     disabled: PropTypes.bool,
     onChange: PropTypes.func,
-    type: PropTypes.string
+    type: PropTypes.string,
+    required: PropTypes.bool,
+    error: PropTypes.bool,
+    errorText: PropTypes.string,
+    onBlur: PropTypes.func
 }
 
 Input.defaultProps = {
     inputType: "standard",
+    error: false,
+    onBlur: () => {},
+    errorText: "",
     type: "text",
     disabled: false,
+    required: false,
     onChange: () => {}
 }

@@ -5,7 +5,7 @@ describe("Input", () => {
     it("should render with the provided value", () => {
         const inputValue = "dummyValue"
         const label = "dummyLabel"
-        render(<Input value={inputValue} label={label}/>);
+        render(<Input value={inputValue} name="x" id="x" label={label}/>);
 
         const inputNode = screen.getByLabelText(label)
 
@@ -19,7 +19,7 @@ describe("Input", () => {
         const label = "dummyLabel"
         const dummyFunc = jest.fn(() => {});
 
-        render(<Input value={inputValue} label={label} onChange={dummyFunc}/>);
+        render(<Input value={inputValue}  name="x" id="x"  label={label} onChange={dummyFunc}/>);
         
         const inputNode = screen.getByLabelText(label);
         expect(inputNode).toHaveDisplayValue(inputValue);
@@ -33,9 +33,9 @@ describe("Input", () => {
     it("should be disabled if disabled is true", () => {
         const inputValue = "dummyValue"
         const label = "dummyLabel"
-        render(<Input value={inputValue} disabled label={label} />);
+        render(<Input  name="x" id="x"  value={inputValue} disabled label={label} />);
 
         const inputNode = screen.getByLabelText(label);
         expect(inputNode).toBeDisabled();
-    })
+    });
 })

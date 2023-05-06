@@ -28,4 +28,6 @@ jobs:
         cd ui
         npm ci
     - name: Run tests
-      run: npm test
+      run: |
+        cd ui
+        npm test

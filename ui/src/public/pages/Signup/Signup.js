@@ -1,5 +1,5 @@
 import React from 'react'
-import {useFormik, yupToFormErrors} from "formik";
+import { useFormik } from "formik";
 import Input from '../../../components/Input/Input';
 import Button from '../../../components/Button/Button';
 import * as Yup from "yup";
@@ -27,62 +27,63 @@ export default function Signup() {
             console.log(values);
         }
     })
-  return (
-    <Container maxWidth="lg">
-        <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Stack spacing={1}>
-      <Typography variant='h3' textAlign="center">Signup</Typography>
-      <Stack justifyContent="center" direction="row">
-      <form onSubmit={formik.handleSubmit}>
-      <Stack spacing={2}>
-        <Input  label='Firstname' 
-                name="firstname" 
-                id="firstname" 
-                error={formik.touched.firstname}
-                errorText={formik.errors.firstname}
-                value={formik.values.firstname}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                inputType="outlined"
-        />
-        <Input label='Lastname' 
-            name="lastname"
-            id="lastname"
-            error={formik.touched.lastname}
-            errorText={formik.errors.lastname}
-            value={formik.values.lastname}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            inputType="outlined"
-        />
-        <Input label='Email' name="email" type="email" id="email" 
-        error={formik.touched.email}
-        errorText={formik.errors.lastname}
-        value={formik.values.email}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        inputType="outlined"
-        />
-        <Input label='Password' 
-        type="password" 
-        value={formik.values.password} 
-        error={formik.touched.password}
-        errorText={formik.errors.password}
-        onBlur={formik.handleBlur}
-        name="password" 
-        id="password"
-        onChange={formik.handleChange}
-        inputType="outlined"
-        />
-        <Button type="submit"> Signup</Button>
+    return (
+        <Container maxWidth="lg">
+            <Stack justifyContent="center">
+            <Card sx={{ minWidth: 275 , maxWidth: 500}}>
+                <CardContent>
+                    <Stack spacing={1}>
+                        <Typography variant='h3' textAlign="center">Signup</Typography>
+                        <Stack justifyContent="center" direction="row">
+                            <form onSubmit={formik.handleSubmit}>
+                                <Stack spacing={2}>
+                                    <Input label='Firstname'
+                                        name="firstname"
+                                        id="firstname"
+                                        error={formik.touched.firstname}
+                                        errorText={formik.errors.firstname}
+                                        value={formik.values.firstname}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        inputType="outlined"
+                                    />
+                                    <Input label='Lastname'
+                                        name="lastname"
+                                        id="lastname"
+                                        error={formik.touched.lastname}
+                                        errorText={formik.errors.lastname}
+                                        value={formik.values.lastname}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        inputType="outlined"
+                                    />
+                                    <Input label='Email' name="email" type="email" id="email"
+                                        error={formik.touched.email}
+                                        errorText={formik.errors.lastname}
+                                        value={formik.values.email}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        inputType="outlined"
+                                    />
+                                    <Input label='Password'
+                                        type="password"
+                                        value={formik.values.password}
+                                        error={formik.touched.password}
+                                        errorText={formik.errors.password}
+                                        onBlur={formik.handleBlur}
+                                        name="password"
+                                        id="password"
+                                        onChange={formik.handleChange}
+                                        inputType="outlined"
+                                    />
+                                    <Button type="submit"> Signup</Button>
+                                </Stack>
+                            </form>
+                        </Stack>
+                    </Stack>
+                </CardContent>
+            </Card>
         </Stack>
-        </form>
-   </Stack>
-   </Stack>
-        </CardContent>
-    </Card>
-        
-    </Container>
-  )
+        </Container>
+    )
 }

@@ -5,6 +5,8 @@ import Button from '../../../components/Button/Button';
 import * as Yup from "yup";
 import CardContent from '@mui/material/CardContent';
 import Card from '@mui/material/Card';
+import { Container, Typography, Stack } from '@mui/material';
+
 
 
 export default function Signup() {
@@ -26,11 +28,14 @@ export default function Signup() {
         }
     })
   return (
-    <div>
+    <Container maxWidth="lg">
         <Card sx={{ minWidth: 275 }}>
       <CardContent>
+        <Stack spacing={1}>
+      <Typography variant='h3' textAlign="center">Signup</Typography>
+      <Stack justifyContent="center" direction="row">
       <form onSubmit={formik.handleSubmit}>
-        Signup
+      <Stack spacing={2}>
         <Input  label='Firstname' 
                 name="firstname" 
                 id="firstname" 
@@ -71,10 +76,13 @@ export default function Signup() {
         inputType="outlined"
         />
         <Button type="submit"> Signup</Button>
+        </Stack>
         </form>
+   </Stack>
+   </Stack>
         </CardContent>
     </Card>
         
-    </div>
+    </Container>
   )
 }

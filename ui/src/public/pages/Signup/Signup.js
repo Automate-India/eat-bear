@@ -3,6 +3,8 @@ import {useFormik, yupToFormErrors} from "formik";
 import Input from '../../../components/Input/Input';
 import Button from '../../../components/Button/Button';
 import * as Yup from "yup";
+import CardContent from '@mui/material/CardContent';
+import Card from '@mui/material/Card';
 
 
 export default function Signup() {
@@ -25,7 +27,9 @@ export default function Signup() {
     })
   return (
     <div>
-        <form onSubmit={formik.handleSubmit}>
+        <Card sx={{ minWidth: 275 }}>
+      <CardContent>
+      <form onSubmit={formik.handleSubmit}>
         Signup
         <Input  label='Firstname' 
                 name="firstname" 
@@ -35,6 +39,7 @@ export default function Signup() {
                 value={formik.values.firstname}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                inputType="outlined"
         />
         <Input label='Lastname' 
             name="lastname"
@@ -44,6 +49,7 @@ export default function Signup() {
             value={formik.values.lastname}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            inputType="outlined"
         />
         <Input label='Email' name="email" type="email" id="email" 
         error={formik.touched.email}
@@ -51,6 +57,7 @@ export default function Signup() {
         value={formik.values.email}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
+        inputType="outlined"
         />
         <Input label='Password' 
         type="password" 
@@ -61,9 +68,13 @@ export default function Signup() {
         name="password" 
         id="password"
         onChange={formik.handleChange}
+        inputType="outlined"
         />
         <Button type="submit"> Signup</Button>
         </form>
+        </CardContent>
+    </Card>
+        
     </div>
   )
 }

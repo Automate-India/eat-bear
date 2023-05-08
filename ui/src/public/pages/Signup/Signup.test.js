@@ -83,20 +83,62 @@ describe("Signup", () => {
             expect(emailNode).tobeEnabled;
         });
 
-        it("should raise exception if ")
+        it("should show error message if user enters invalid email", async () => {
+            const user = userEvent.setup();
+            render(<Signup />);
+            const emailNode = screen.getByLabelText("Email");
+            const signupNode = screen.getByRole("heading");
+            expect(signupNode).toHaveTextContent("Signup");
+            await act(async () => await user.type(emailNode, "Thakkalapally persons are great in the world"));
+            await act(async () => await user.click(signupNode));
+            const paragraphNode = screen.getByText("email must be a valid email");
+            expect(paragraphNode).toHaveTextContent("email must be a valid email");
+            const signupButtonNode = screen.getByRole("button");
+            expect(signupButtonNode).toBeDisabled();
+        });
 
     })
 
+    describe("Password" , () => {
+        it("should render password field", () => {
+            render(<Signup />);
+            const passwordNode = screen.getByLabelText("Password");
+            expect(passwordNode).tobeEnabled;
+        });
 
-    it("should render password field", () => {
-        render(<Signup />);
-        const passwordNode = screen.getByLabelText("Password");
-        expect(passwordNode).tobeEnabled;
+        it("should show error message if password user enters is less that 4 chars", async () => {
+            const user = userEvent.setup();
+            render(<Signup />);
+            const passwordNode = screen.getByLabelText("Password");
+            const signupNode = screen.getByRole("heading");
+            expect(signupNode).toHaveTextContent("Signup");
+            await act(async () => await user.type(passwordNode, "san"));
+            await act(async () => await user.click(signupNode));
+            const paragraphNode = screen.getByText("Password must be atleast 4 chars!");
+            expect(paragraphNode).toHaveTextContent("Password must be atleast 4 chars!");
+            const signupButtonNode = screen.getByRole("button");
+            expect(signupButtonNode).toBeDisabled();
+        });
+
+        it("should show error message if password is > 20 chars", async () => {
+            const user = userEvent.setup();
+            render(<Signup />);
+            const passwordNode = screen.getByLabelText("Password");
+            const signupNode = screen.getByRole("heading");
+            expect(signupNode).toHaveTextContent("Signup");
+            await act(async () => await user.type(passwordNode, "sanjuIloveyoumyfriend"));
+            await act(async () => await user.click(signupNode));
+            const paragraphNode = screen.getByText("Must be less than 20 charcters");
+            expect(paragraphNode).toHaveTextContent("Must be less than 20 charcters");
+            const signupButtonNode = screen.getByRole("button");
+            expect(signupButtonNode).toBeDisabled();
+        })
     });
 
-    it("should render singup button", () => {
+    it("should render signup button", () => {
         render(<Signup />);
         const signupNode = screen.getByRole("button");
         expect(signupNode).toHaveTextContent("Signup")
     });
+    
 })

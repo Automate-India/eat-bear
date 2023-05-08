@@ -19,8 +19,8 @@ export default function Signup() {
         validationSchema: Yup.object({
             firstname: Yup.string().min(3, "Firstname must be atleast 3 chars!").max(15, "Must be 15 characters or less").required("Required!"),
             lastname: Yup.string().min(3, "Lastname must be atleast 3 chars!").max(15, "Must be 15 characters or less").required("Required!"),
-            email: Yup.string().email("Invalid email").required("Required!"),
-            password: Yup.string().max(10, "Must be of 10 charcters").min(3, "Must be atleast 3 charcters").required("Password must be provided!")
+            email: Yup.string().email().required(),
+            password: Yup.string().max(20, "Must be less than 20 charcters").min(4, "Password must be atleast 4 chars!").required("Password must be provided!")
         }),
         onSubmit: values => {
             console.log(values);
@@ -59,9 +59,12 @@ export default function Signup() {
                                         inputType="outlined"
                                         sx={{width: 300}}
                                     />
-                                    <Input label='Email' name="email" type="email" id="email"
+                                    <Input label='Email' 
+                                        name="email" 
+                                        type="email" 
+                                        id="email"
                                         error={formik.touched.email && Boolean(formik.errors.email)}
-                                        errorText={formik.touched.email && formik.errors.lastname}
+                                        errorText={formik.touched.email && formik.errors.email}
                                         value={formik.values.email}
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}

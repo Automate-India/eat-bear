@@ -99,7 +99,7 @@ describe("Signup", () => {
 
     })
 
-    describe("Password" , () => {
+    describe("Password", () => {
         it("should render password field", () => {
             render(<Signup />);
             const passwordNode = screen.getByLabelText("Password");
@@ -135,10 +135,14 @@ describe("Signup", () => {
         })
     });
 
-    it("should render signup button", () => {
-        render(<Signup />);
-        const signupNode = screen.getByRole("button");
-        expect(signupNode).toHaveTextContent("Signup")
-    });
-    
+        it("should render signup button", () => {
+            render(<Signup />);
+            const signupNode = screen.getByRole("button");
+            expect(signupNode).toHaveTextContent("Signup")
+        });
+        
+        it("should make a post request to the server with user entered values", () => {
+            
+        })
+
 })

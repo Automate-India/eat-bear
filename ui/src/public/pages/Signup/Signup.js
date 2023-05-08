@@ -18,8 +18,8 @@ export default function Signup() {
             password: ""
         },
         validationSchema: Yup.object({
-            firstname: Yup.string().max(15, "Must be 15 characters or less").required("Required!"),
-            lastname: Yup.string().max(15, "Must be 15 characters or less").required("Required!"),
+            firstname: Yup.string().min(3, "Firstname must be atleast 3 chars!").max(15, "Must be 15 characters or less").required("Required!"),
+            lastname: Yup.string().min(3, "Lastname must be atleast 3 chars!").max(15, "Must be 15 characters or less").required("Required!"),
             email: Yup.string().email("Invalid email").required("Required!"),
             password: Yup.string().max(10, "Must be of 10 charcters").min(3, "Must be atleast 3 charcters").required("Password must be provided!")
         }),
@@ -41,8 +41,8 @@ export default function Signup() {
                                     <Input label='Firstname'
                                         name="firstname"
                                         id="firstname"
-                                        error={formik.touched.firstname}
-                                        errorText={formik.errors.firstname}
+                                        error={formik.touched.firstname && Boolean(formik.errors.firstname)}
+                                        errorText={formik.touched.firstname && formik.errors.firstname}
                                         value={formik.values.firstname}
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
@@ -52,8 +52,8 @@ export default function Signup() {
                                     <Input label='Lastname'
                                         name="lastname"
                                         id="lastname"
-                                        error={formik.touched.lastname}
-                                        errorText={formik.errors.lastname}
+                                        error={formik.touched.lastname && Boolean(formik.errors.lastname)}
+                                        errorText={formik.touched.lastname && formik.errors.lastname}
                                         value={formik.values.lastname}
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
@@ -61,8 +61,8 @@ export default function Signup() {
                                         sx={{width: 300}}
                                     />
                                     <Input label='Email' name="email" type="email" id="email"
-                                        error={formik.touched.email}
-                                        errorText={formik.errors.lastname}
+                                        error={formik.touched.email && Boolean(formik.errors.email)}
+                                        errorText={formik.touched.email && formik.errors.lastname}
                                         value={formik.values.email}
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
@@ -72,8 +72,8 @@ export default function Signup() {
                                     <Input label='Password'
                                         type="password"
                                         value={formik.values.password}
-                                        error={formik.touched.password}
-                                        errorText={formik.errors.password}
+                                        error={formik.touched.password && Boolean(formik.errors.password)}
+                                        errorText={formik.touched.password && formik.errors.password}
                                         onBlur={formik.handleBlur}
                                         name="password"
                                         id="password"

@@ -5,7 +5,7 @@ import Button from '../../../components/Button/Button';
 import * as Yup from "yup";
 import CardContent from '@mui/material/CardContent';
 import Card from '@mui/material/Card';
-import { Container, Typography, Stack } from '@mui/material';
+import { Container, Typography, Stack, Paper } from '@mui/material';
 
 
 
@@ -27,10 +27,12 @@ export default function Signup() {
             console.log(values);
         }
     })
+
+    console.log(formik);
     return (
-        <Container maxWidth="lg">
-            <Stack justifyContent="center">
-            <Card sx={{ minWidth: 275 , maxWidth: 500}}>
+        <Container maxWidth="lg" style={{height: "100vh"}}>
+            <Stack justifyContent="center" direction="row" style={{height: "inherit"}} alignItems="center">
+            <Paper sx={{ minWidth: 275 , width: 500, maxHeight:500}} borderRadius={5}>
                 <CardContent>
                     <Stack spacing={1}>
                         <Typography variant='h3' textAlign="center">Signup</Typography>
@@ -46,6 +48,7 @@ export default function Signup() {
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
                                         inputType="outlined"
+                                        sx={{width: 300}}
                                     />
                                     <Input label='Lastname'
                                         name="lastname"
@@ -56,6 +59,7 @@ export default function Signup() {
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
                                         inputType="outlined"
+                                        sx={{width: 300}}
                                     />
                                     <Input label='Email' name="email" type="email" id="email"
                                         error={formik.touched.email}
@@ -64,6 +68,7 @@ export default function Signup() {
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
                                         inputType="outlined"
+                                        sx={{width: 300}}
                                     />
                                     <Input label='Password'
                                         type="password"
@@ -75,14 +80,19 @@ export default function Signup() {
                                         id="password"
                                         onChange={formik.handleChange}
                                         inputType="outlined"
+                                        sx={{width: 300}}
                                     />
-                                    <Button type="submit"> Signup</Button>
+                                    <Stack direction="row" justifyContent="center">
+                                        <Button type="submit"  disabled={!formik.isValid}>
+                                        Signup
+                                        </Button>
+                                    </Stack>
                                 </Stack>
                             </form>
                         </Stack>
                     </Stack>
                 </CardContent>
-            </Card>
+            </Paper>
         </Stack>
         </Container>
     )

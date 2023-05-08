@@ -4,7 +4,6 @@ import Input from '../../../components/Input/Input';
 import Button from '../../../components/Button/Button';
 import * as Yup from "yup";
 import CardContent from '@mui/material/CardContent';
-import Card from '@mui/material/Card';
 import { Container, Typography, Stack, Paper } from '@mui/material';
 
 

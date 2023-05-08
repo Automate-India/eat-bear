@@ -28,11 +28,10 @@ export default function Signup() {
         }
     })
 
-    console.log(formik);
     return (
         <Container maxWidth="lg" style={{height: "100vh"}}>
             <Stack justifyContent="center" direction="row" style={{height: "inherit"}} alignItems="center">
-            <Paper sx={{ minWidth: 275 , width: 500, maxHeight:500}} borderRadius={5}>
+            <Paper sx={{ minWidth: 275 , width: 500, maxHeight:500}}>
                 <CardContent>
                     <Stack spacing={1}>
                         <Typography variant='h3' textAlign="center">Signup</Typography>

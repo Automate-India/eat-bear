@@ -1,5 +1,7 @@
 import { screen, render, act } from "@testing-library/react";
 import userEvent from '@testing-library/user-event'
+import { server } from "../../../mocks/server";
+import {rest} from "msw";
 
 import Signup from "../Signup/Signup";
 
@@ -141,8 +143,22 @@ describe("Signup", () => {
             expect(signupNode).toHaveTextContent("Signup")
         });
         
-        it("should make a post request to the server with user entered values", () => {
-            
+        it("should make a post request to the server with user entered values", async () => {
+            server.use(rest.get("/signup/", (req, res, ctx) => {
+                console.log(req)
+            }))
+            render(<Signup/>);
+            userEvent.setup();
+            const firstnameNode = screen.getByLabelText("Firstname");
+            const lastnameNode = screen.getByLabelText("Lastname");
+            const emailNode = screen.getByLabelText("Email");
+            const passwordNode = screen.getByLabelText("Password");
+            const signupNode = screen.getByRole("button");
+            await act((async () => await userEvent.type(firstnameNode, "sanju")));
+            await act((async () => await userEvent.type(lastnameNode, "Thakkalapally")));
+            await act((async () => await userEvent.type(emailNode, "dhanusht51@gmail.com")));
+            await act((async () => await userEvent.type(passwordNode, "Dhanush@97")));
+            await act((async () => await userEvent.click(signupNode)));
         })
 
 })

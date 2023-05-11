@@ -5,6 +5,7 @@ import Button from '../../../components/Button/Button';
 import * as Yup from "yup";
 import CardContent from '@mui/material/CardContent';
 import { Container, Typography, Stack, Paper } from '@mui/material';
+import { signup } from '../../../clientApi';
 
 
 
@@ -22,8 +23,8 @@ export default function Signup() {
             email: Yup.string().email().required(),
             password: Yup.string().max(20, "Must be less than 20 charcters").min(4, "Password must be atleast 4 chars!").required("Password must be provided!")
         }),
-        onSubmit: values => {
-            console.log(values);
+        onSubmit: async (values) => {
+            await signup(values);
         }
     })
 

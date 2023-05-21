@@ -1,9 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import { Typography } from "@mui/material";
+import Signup from './public/pages/Signup/Signup';
+
 
 function App() {
   return (
-   <h2>Hello welcome</h2>
+    <>
+      <Signup />
+    </>
   );
 }
 
